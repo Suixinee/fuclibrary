@@ -51,7 +51,13 @@ function parse_url_param($str)
 
 }
 
-
+/**
+ * 二维数组排序
+ * @param $arr
+ * @param $key
+ * @param string $type
+ * @return array
+ */
 function array_sort($arr, $key, $type = 'desc')
 {
     $key_value = $new_array = [];
