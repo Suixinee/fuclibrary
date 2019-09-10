@@ -39,15 +39,38 @@ function get_arr_column($arr, $key_name)
  */
 function parse_url_param($str)
 {
-    $data=[];
-    $str = explode('?',$str);
-    $str =end($str); //a=1&b=2
-    $parameter = explode('&',$str);
+    $data = [];
+    $str = explode('?', $str);
+    $str = end($str); //a=1&b=2
+    $parameter = explode('&', $str);
     foreach ($parameter as $value) {
-
+        $tmp = explode('=', $value);
+        $data[$tmp[0]] = $tmp[1];
     }
+    return $data;
 
 }
+
+
+function array_sort($arr, $key, $type = 'desc')
+{
+    $key_value = $new_array = [];
+    foreach ($arr as $k => $a) {
+        $key_value[$k] = $a[$key];
+    }
+    if ($type == 'asc') {
+        asort($key_value);
+    } else {
+        arsort($key_value);
+    }
+    reset($key_value);
+    foreach ($key_value as $k => $v) {
+        $new_array[$k] = $arr[$k];
+    }
+    return $new_array;
+}
+
+
 
 
 
