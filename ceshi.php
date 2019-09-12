@@ -45,3 +45,12 @@ function insert_sort($arr){
     return $arr;
 }
 var_dump(insert_sort([7,5,4,11,2]));
+
+/**
+ * 假如 有一张表(student) 某个字段(shortname)有重复值 查出重复信息
+ */
+$strsql = <<<sql
+select * from studen where shortname in (select shortname from student group by shortname having count(shortname))
+sql;
+
+echo $strsql;

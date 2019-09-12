@@ -107,16 +107,17 @@ var_dump(select_sort([3, 1, 5, 2]));
 	return $data;
 }
  * */
-function insert_sort($arr){
-    if(!empty($arr)&&is_array($arr)){
+function insert_sort($arr)
+{
+    if (!empty($arr) && is_array($arr)) {
         $len = count($arr);
-        for ($i=1;$i<$len;$i++){
+        for ($i = 1; $i < $len; $i++) {
             $tmp = $arr[$i];
-            for ($j = $i-1;$j>=0;$j--){
-                if($arr[$j]>$tmp){
-                    $arr[$j+1]=$arr[$j];
-                    $arr[$j]=$tmp;
-                }else{
+            for ($j = $i - 1; $j >= 0; $j--) {
+                if ($arr[$j] > $tmp) {
+                    $arr[$j + 1] = $arr[$j];
+                    $arr[$j] = $tmp;
+                } else {
                     break;
                 }
             }
@@ -126,8 +127,56 @@ function insert_sort($arr){
 
 }
 
-var_dump(insert_sort([11,7,5,22]));
+var_dump(insert_sort([11, 7, 5, 22]));
 
+
+/*function quick_sort($data)
+{
+    if (!empty($data) && is_array($data)) {
+        $len = count($data);
+        if ($len <= 1) return $data;
+
+        $base = $data[0];
+        $left_array = array();
+        $right_array = array();
+        for ($i = 1; $i < $len; $i++) {
+            if ($base > $data[$i]) {
+                $left_array[] = $data[$i];
+            } else {
+                $right_array[] = $data[$i];
+            }
+        }
+        if (!empty($left_array)) $left_array = quick_sort($left_array);
+        if (!empty($right_array)) $right_array = quick_sort($right_array);
+
+        return array_merge($left_array, array($base), $right_array);
+    }
+}*/
+
+function quick_sort($data)
+{
+    if (!empty($data) && is_array($data)) {
+        $len = count($data);
+        if ($len <= 1) return $data;
+
+        $base = $data[0];
+        $left_array = $right_array = [];
+
+        for ($i = 1; $i < $len; $i++) {
+            if ($base > $data[$i]) {
+                $left_array[] = $data[$i];
+            } else {
+                $right_array[] = $data[$i];
+            }
+        }
+        if (!empty($left_array)) $left_array = quick_sort($left_array);
+        if (!empty($right_array)) $right_array = quick_sort($right_array);
+
+        return array_merge($left_array, [$base], $right_array);
+    }
+}
+
+var_dump(quick_sort([3, 7, 9, 8]));
 
 
 
