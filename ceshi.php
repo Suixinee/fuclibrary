@@ -29,22 +29,19 @@ var_dump(array_sort($data,'id','asc'));
 
 var_dump(array_multi2single($data));
 
-function insert_srot($arr){
-    if(empty($arr)&&is_array($arr)){
+function insert_sort($arr){
+    if(!empty($arr)&&is_array($arr)){
         $len = count($arr);
-        for($i=1;$i<$len;$i++){
+        for ($i=1;$i<$len;$i++){
             $tmp = $arr[$i];
-            for($j=$i-1;$j>=0;$j++){
+            for ($j=$i-1;$j>=0;$j--){
                 if($arr[$j]>$tmp){
-                    $arr[$j+1]=$arr[$j];
+                    $arr[$j+1] = $arr[$j];
                     $arr[$j] = $tmp;
-                }else{
-                    break;
                 }
             }
         }
     }
     return $arr;
 }
-
-var_dump(insert_srot([7,5,4,11,2]));
+var_dump(insert_sort([7,5,4,11,2]));
