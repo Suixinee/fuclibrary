@@ -1,5 +1,5 @@
 <?php
-
+echo "<pre>";
 
 /**
  *
@@ -177,6 +177,33 @@ function quick_sort($data)
 }
 
 var_dump(quick_sort([3, 7, 9, 8]));
+
+
+/*
+ * 求出数组相邻数的最大差值
+ *
+ * */
+function arr_diff_order($arr)
+{
+    $arr_diff =[];
+    if(!empty($arr)&&is_array($arr)){
+        $len = count($arr);
+        if ($len<=1) return $arr;
+        for($i=1;$i<$len;$i++){
+            if($arr[$i]<$arr[$i-1]){
+                $arr_diff[$arr[$i-1].'-'.$arr[$i]]=$arr[$i-1] - $arr[$i];
+            }else{
+                $arr_diff[$arr[$i-1].'-'.$arr[$i]]=$arr[$i] - $arr[$i-1];
+            }
+        }
+    }
+    $array_values = array_values($arr_diff);
+    arsort($arr_diff);
+
+    return [key($arr_diff)=>$arr_diff[key($arr_diff)]];
+}
+
+var_dump(arr_diff_order([1,7,5,3,9]));
 
 
 

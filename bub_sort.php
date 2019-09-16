@@ -32,3 +32,4 @@ function bub_sort($arr)
 }
 
 var_dump(bub_sort([7,6,5,4,3]));
+var_dump(min([7,6,5,4,3]));
