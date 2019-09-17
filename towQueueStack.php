@@ -76,6 +76,10 @@ $stack->push(1);
 $stack->push(2);
 $stack->push(3);
 $stack->push(4);
+/*sqlQueue
+ * enqueue 入队
+ * dequeue  出队
+ * */
 
 echo $stack->peek();
 echo $stack->pop();
