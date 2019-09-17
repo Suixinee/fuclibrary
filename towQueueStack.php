@@ -28,12 +28,12 @@ class TwoQueueStack
         $this->queue = new SplQueue();
         $this->help = new SplQueue();
     }
-
+    //压栈
     public function push($data)
     {
         $this->queue->enqueue($data);
     }
-
+    //出栈
     public function pop()
     {
         if ($this->queue->isEmpty()) {
@@ -47,7 +47,7 @@ class TwoQueueStack
         return $res;
 
     }
-
+    //返回栈顶元素
     public function peek()
     {
         if ($this->queue->isEmpty()) {
